@@ -1,6 +1,7 @@
 """
 This defines data structure of each product in database.
 """
+import enum
 
 
 class Product:
@@ -12,6 +13,13 @@ class Product:
         self.brand_name = None
         self.category_id = None
         self.category_name = None
+
+        # Define types
+        types = set()
+        types.add(ProductTypes.brand)
+        types.add(ProductTypes.category)
+        types.add(ProductTypes.name)
+        self.types = types
 
     def set_product(self, raw_data):
         list_of_entities = raw_data
@@ -39,3 +47,15 @@ class Product:
 
     def get_category_name(self):
         return self.category_name
+
+    def types_mapping(self):
+        function_map = dict()
+        function_map[ProductTypes.name] = self.get_title()
+        function_map[ProductTypes.category] = self.get_category_name()
+        function_map[ProductTypes.brand] = self.get_brand_name()
+
+
+class ProductTypes(enum.Enum):
+    name = 1
+    category = 2
+    brand = 3

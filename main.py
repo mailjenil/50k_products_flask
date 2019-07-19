@@ -1,6 +1,8 @@
 import flask
 from flask import request, jsonify
+import json
 from src.product_container_builder import ProductContainerBuilder
+from src.product import ProductTypes
 
 app = flask.Flask(__name__)
 product_path = "data/sample_product_data.tsv"
@@ -34,8 +36,17 @@ def search_engine_api():
     return jsonify(results)
 
 
+@app.route('/api/products/autocomplete', methods=['POST'])
+def auto_complete_api():
+    request_json = json.loads(request.data)
+    if 'type' in request_json and request_json['type'] in ProductTypes.__members__:
+        # Search Trie
+    else:
+        return jsonify({})
+
+
 @app.route("/search/<string:box>")
-def auto_complete_api(box):
+def search_api(box):
     """
     Autocomplete API
     :param box:
