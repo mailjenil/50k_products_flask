@@ -18,5 +18,5 @@ class ProductContainer:
         for each_product in all_products_raw_data:
             product = Product()
             product.set_product(each_product)
-
-        self.products.append(product)
+            self.products.append(product)
+        return self.products

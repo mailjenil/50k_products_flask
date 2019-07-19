@@ -14,10 +14,28 @@ class Product:
         self.category_name = None
 
     def set_product(self, raw_data):
-        list_of_entities = raw_data.split("\t")
+        list_of_entities = raw_data
         self.id = list_of_entities[0]
         self.title = list_of_entities[1]
         self.brand_id = list_of_entities[2]
         self.brand_name = list_of_entities[3]
         self.category_id = list_of_entities[4]
         self.category_name = list_of_entities[5]
+
+    def get_id(self):
+        return self.id
+
+    def get_title(self):
+        return self.title
+
+    def get_brand_id(self):
+        return self.brand_id
+
+    def get_brand_name(self):
+        return self.brand_name
+
+    def get_category_id(self):
+        return self.category_id
+
+    def get_category_name(self):
+        return self.category_name

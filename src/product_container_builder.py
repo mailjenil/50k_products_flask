@@ -8,7 +8,7 @@ from .product_container import ProductContainer
 import logging
 
 
-class ProductBuilder:
+class ProductContainerBuilder:
 
     def __init__(self):
         self.product_container = ProductContainer()
@@ -22,7 +22,7 @@ class ProductBuilder:
         """
         return raw_product
 
-    def build(self, data_path):
+    def build_container(self, data_path):
         list_of_raw_products = []
         if data_path is None:
             raise Exception("Data path not specified")
@@ -30,15 +30,17 @@ class ProductBuilder:
         with open(data_path) as tsv_data_file:
             reader = csv.reader(tsv_data_file, delimiter='\t')
             for each_raw_product in reader:
-                clean_product_data = self.clean_product(each_raw_product)
-                product_entities = clean_product_data.split("\t")
+                product_info = self.clean_product(each_raw_product)
 
-                if len(product_entities) == 6:
-                    list_of_raw_products.append(product_entities)
+                if len(product_info) == 6:
+                    list_of_raw_products.append(product_info)
                 else:
-                    logging.log("Bad product data found")
+                    logging.log("Bad product data")
 
-        return self.product_container.set_products(list_of_raw_products)
+        print(len(list_of_raw_products))
+
+        self.product_container.set_products(list_of_raw_products)
+        return self.product_container
 
 
 
