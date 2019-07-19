@@ -23,9 +23,6 @@ class SearchCondition:
         elif (self.condition_type == "brandId") and (product.get_brand_id() in self.condition_values):
             return True
         elif (self.condition_type == "brandName") and (product.get_brand_name() in self.condition_values):
-            print(self.condition_type)
-            print(product.get_brand_name())
-            print(self.condition_values)
             return True
         elif (self.condition_type == "categoryId") and (product.get_category_id() in self.condition_values):
             return True

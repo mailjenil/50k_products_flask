@@ -27,7 +27,6 @@ class SearchDispatcher:
                 if condition.is_satisfied(product) is True:
                     result_products.append(product)
 
-        print(len(result_products))
         search_results = SearchResults()
         search_results.build(result_products)
         return search_results

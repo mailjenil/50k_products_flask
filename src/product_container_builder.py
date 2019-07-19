@@ -37,8 +37,6 @@ class ProductContainerBuilder:
                 else:
                     logging.log("Bad product data")
 
-        print(len(list_of_raw_products))
-
         self.product_container.set_products(list_of_raw_products)
         return self.product_container
 
