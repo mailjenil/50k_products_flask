@@ -48,12 +48,6 @@ class Product:
     def get_category_name(self):
         return self.category_name
 
-    def types_mapping(self):
-        function_map = dict()
-        function_map[ProductTypes.name] = self.get_title()
-        function_map[ProductTypes.category] = self.get_category_name()
-        function_map[ProductTypes.brand] = self.get_brand_name()
-
 
 class ProductTypes(enum.Enum):
     name = 1
